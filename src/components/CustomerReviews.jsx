@@ -45,17 +45,32 @@ const CustomerReviews = ({ reviews, overallRating }) => {
           <div className="p-6 bg-white border border-gray-200 rounded-lg">
             <div className="mb-6 text-center">
               <div className="mb-2 text-4xl font-bold text-gray-900">
-                {reviews.length > 0 ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1) : overallRating}
+                {reviews.length > 0
+                  ? (
+                      reviews.reduce((sum, review) => sum + review.rating, 0) /
+                      reviews.length
+                    ).toFixed(1)
+                  : overallRating}
               </div>
               <div className="flex justify-center mb-2">
-                <StarRating rating={reviews.length > 0 ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length : overallRating} showCount={false} />
+                <StarRating
+                  rating={
+                    reviews.length > 0
+                      ? reviews.reduce(
+                          (sum, review) => sum + review.rating,
+                          0
+                        ) / reviews.length
+                      : overallRating
+                  }
+                  showCount={false}
+                />
               </div>
               <div className="text-sm text-gray-600">
-                {reviews.length} global rating{reviews.length !== 1 ? 's' : ''}
+                {reviews.length} global rating{reviews.length !== 1 ? "s" : ""}
               </div>
             </div>
 
-              <div className="space-y-3">
+            <div className="space-y-3">
               {ratingDistribution.map((item) => (
                 <div
                   key={item.stars}
